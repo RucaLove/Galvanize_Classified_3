@@ -42,23 +42,21 @@
                 })
         }
 
-        function editAd(a,b,c,d,e) {
-          console.log(a,b,c,d,e);
-          var formObj = {
-            id: a,
-            title: b,
-            price: c,
-            description: d,
-            item_image: e
-          }
-          AdService.patchAd(formObj)
-          .then(function(){
-            AdService.getAd()
-            .then(function(data2) {
-              console.log(data2);
-              vm.ad = data2;
-            })
-          })
+        function editAd(a, b, c, d, e) {
+            var formObj = {
+                id: a,
+                title: b,
+                price: c,
+                description: d,
+                item_image: e
+            }
+            AdService.patchAd(formObj)
+                .then(function() {
+                    AdService.getAd()
+                        .then(function(data2) {
+                            vm.ad = data2;
+                        })
+                })
         }
 
     }

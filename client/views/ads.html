@@ -1,13 +1,15 @@
-<div>
-    <label for="sort"><strong>   Sort by   </strong></label>
-    <select class="form-control" id="sort" ng-change="$ctrl.sort()" ng-model="$ctrl.sortType">
+<div class="container">
+    <div class="col-md-12">
+        <label for="sort"><strong>   Sort by   </strong></label>
+        <select class="form-control" id="sort" ng-change="$ctrl.sort()" ng-model="$ctrl.sortType">
           <option>Price</option>
           <option>Date</option>
     </select>
+    </div>
 </div>
 
 <div class="container">
-    <div class="col-md-8">
+    <div class="col-md-12">
 
         <form name="form" novalidate ng-submit="$ctrl.createAd()">
             <div ng-class="{'form-group': true, 'has-error': form.title.$invalid && form.title.$touched }">
@@ -37,42 +39,42 @@
 </div>
 
 <div class="container" ng-repeat="ad in $ctrl.ads">
-  <div class="col-lg-12 col-sm-12">
-    <h1>{{ad.title}} | {{ad.price}}</h1>
-    <img ng-src="{{ad.item_image}}" alt="image here">
-    <p>{{ad.description}}</p>
-    <button type="button" name="button" ng-click="$ctrl.deleteAd($event)" id={{ad.id}}>Delete</button>
-    <button ng-click="$ctrl.showEdit = !$ctrl.showEdit" id="{{ad.id}}" class="btn btn-info">Edit</button>
-  </div>
+    <div class="center">
+        <h1>{{ad.title}} | {{ad.price}}</h1>
+        <img ng-src="{{ad.item_image}}" alt="image here">
+        <p>{{ad.description}}</p>
+        <button type="button" name="button" ng-click="$ctrl.deleteAd($event)" id={{ad.id}}>Delete</button>
+        <button ng-click="$ctrl.showEdit = !$ctrl.showEdit" id="{{ad.id}}" class="btn btn-info">Edit</button>
+    </div>
 
 
-<form name="$ctrl.editForm" id="{{ad.id}}" class="form" ng-show="$ctrl.showEdit" ng-submit="$ctrl.editAd(ad.id, ad.title, ad.price, ad.description, ad.item_image)">
-  <!-- title -->
-  <div class="form-group">
-    <label class="control-label" for="title">Title</label>
-    <input ng-model="ad.title" type="title" class="form-control" id="adTitle">
-  </div>
-  <!-- price -->
-  <div class="form-group">
-    <label class="control-label" for="price">Price</label>
-    <input ng-model="ad.price" type="price" class="form-control" id="adPrice" placeholder="enter price">
-  </div>
-  <!-- description -->
-  <div class="form-group">
-    <label class="control-label" for="description">Description</label>
-    <input ng-model="ad.description" class="form-control" id="adDescription" placeholder="enter description">
-  </div>
-  <!-- image -->
-  <div>
-    <label class="control-label" for="img">Image</label>
-    <input name="item_image" ng-model="ad.item_image" placeholder="Add a photo" type="url" class="form-control" id="image">
-  </div>
+    <form name="$ctrl.editForm" id="{{ad.id}}" class="form" ng-show="$ctrl.showEdit" ng-submit="$ctrl.editAd(ad.id, ad.title, ad.price, ad.description, ad.item_image)">
+        <!-- title -->
+        <div class="form-group">
+            <label class="control-label" for="title">Title</label>
+            <input ng-model="ad.title" type="title" class="form-control" id="adTitle">
+        </div>
+        <!-- price -->
+        <div class="form-group">
+            <label class="control-label" for="price">Price</label>
+            <input ng-model="ad.price" type="price" class="form-control" id="adPrice" placeholder="enter price">
+        </div>
+        <!-- description -->
+        <div class="form-group">
+            <label class="control-label" for="description">Description</label>
+            <input ng-model="ad.description" class="form-control" id="adDescription" placeholder="enter description">
+        </div>
+        <!-- image -->
+        <div>
+            <label class="control-label" for="img">Image</label>
+            <input name="item_image" ng-model="ad.item_image" placeholder="Add a photo" type="url" class="form-control" id="image">
+        </div>
 
-  <br>
-  <!-- submit form -->
-  <button ng-click="toggleNewPost = false"  type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <!-- submit form -->
+        <button ng-click="toggleNewPost = false" type="submit" class="btn btn-primary">Submit</button>
 
-</form>
+    </form>
 </div>
 
 <!-- <div class="container" ng-repeat="ad in $ctrl.ads track by $index">

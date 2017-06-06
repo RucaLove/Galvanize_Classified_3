@@ -42,6 +42,7 @@ router.post('/', (req, res, next) => {
 
 router.patch('/:id', function(req, res, next) {
   knex('classifieds')
+  .where('id', req.params.id)
   .update({
     title: req.body.title,
     description: req.body.description,
